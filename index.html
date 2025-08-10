@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Song ❤️</title>
+    <!-- Link to our styling sheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to Tailwind CSS for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a nice look -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4" style="background-color: #FFC0CB;"> <!-- Light Pink Background -->
+
+    <!-- Main content area container, now with an ID for JavaScript control -->
+    <div id="mainContentArea" class="app-container text-center">
+        <!-- App Title -->
+        <h1 class="text-6xl md:text-7xl font-bold mb-10 text-white drop-shadow-lg" style="font-family: 'Dancing Script', cursive;">
+            Heart Song
+        </h1>
+
+        <!-- The Main Magenta Button -->
+        <button id="mainActionButton" class="relative bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-poppins text-2xl px-12 py-6 rounded-full shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-fuchsia-300"
+                style="letter-spacing: 0.1em; border-radius: 9999px;"> <!-- Super curved sides -->
+            Every Beat for You
+            <!-- Dropdown Menu (initially hidden) -->
+            <div id="dropdownMenu" class="absolute left-1/2 transform -translate-x-1/2 mt-4 w-48 bg-white bg-opacity-90 rounded-xl shadow-lg overflow-hidden z-10 hidden"
+                 style="top: 100%; border: 1px solid rgba(255, 255, 255, 0.3);">
+                <a href="#" id="myMuseBtn" class="block py-3 px-5 text-gray-800 hover:bg-pink-100 transition-colors duration-200 font-poppins text-lg">My Muse</a>
+                <a href="#" id="myLoveBtn" class="block py-3 px-5 text-gray-800 hover:bg-pink-100 transition-colors duration-200 font-poppins text-lg border-t border-gray-200">My Love</a>
+            </div>
+        </button>
+
+        <!-- Sections for My Muse and My Love (initially hidden) -->
+        <div id="myMuseSection" class="content-section hidden bg-blue-100 rounded-xl p-6 mt-10 shadow-xl w-full max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-8 text-blue-800" style="font-family: 'Poppins', sans-serif;">My Muse - Poems</h2>
+            <!-- NEW: Back to Home button for My Muse section -->
+            <button id="backToHomeMuseBtn" class="absolute top-4 left-4 bg-blue-500 text-white p-2 rounded-full shadow-md hover:bg-blue-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                </svg>
+            </button>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Placeholder Poem Card 1 -->
+                <div class="poem-card bg-white rounded-lg shadow-md p-4 text-center transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-poem-title="Whispers of Dawn" data-poem-text="This poem speaks of the quiet moments before sunrise, when the world is still asleep and dreams linger. It reflects on new beginnings and the gentle hope each morning brings, much like the quiet joy of finding you.">
+                    <img src="https://placehold.co/200x150/00008B/ffffff?text=Poem+1" alt="Poem Thumbnail 1" class="rounded-md mb-3 mx-auto">
+                    <p class="text-lg font-semibold text-blue-900" style="font-family: 'Poppins', sans-serif;">Whispers of Dawn</p>
+                </div>
+                <!-- Placeholder Poem Card 2 -->
+                <div class="poem-card bg-white rounded-lg shadow-md p-4 text-center transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-poem-title="Moonlit Serenade" data-poem-text="A serenade under the moon, where stars are our only witnesses. This poem captures the magic of our quiet evenings, the silent conversations, and the comfort of just being together under the vast, gentle night sky.">
+                    <img src="https://placehold.co/200x150/00008B/ffffff?text=Poem+2" alt="Poem Thumbnail 2" class="rounded-md mb-3 mx-auto">
+                    <p class="text-lg font-semibold text-blue-900" style="font-family: 'Poppins', sans-serif;">Moonlit Serenade</p>
+                </div>
+                <!-- Add more poem cards as needed -->
+            </div>
+        </div>
+
+        <div id="myLoveSection" class="content-section hidden rounded-xl p-6 mt-10 shadow-xl w-full max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold mb-8 text-pink-800" style="font-family: 'Poppins', sans-serif;">My Love - Photos</h2>
+            <!-- NEW: Back to Home button for My Love section -->
+            <button id="backToHomeLoveBtn" class="absolute top-4 left-4 bg-purple-500 text-white p-2 rounded-full shadow-md hover:bg-purple-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-400 z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                </svg>
+            </button>
+            <!-- This is the main grid container for ALL photos. -->
+            <!-- It will arrange photos in 1 column on small screens, and 2 columns on medium screens and up. -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Image: images/vertical3.jpg (ACTUALLY HORIZONTAL) -->
+                <div class="md:col-span-2"> <!-- Correct for a horizontal image -->
+                    <img src="images/vertical3.jpg" alt="I will always love you" class="rounded-lg shadow-md w-full transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="horizontal">
+                    <!-- NEW: Description box for horizontal photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        I will always love you
+                    </div>
+                </div>
+
+                <!-- Image: images/horizontal9.jpg (ACTUALLY VERTICAL) -->
+                <div> <!-- Correct for a vertical image -->
+                    <img src="images/horizontal9.jpg" alt="Masanjor memories" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <!-- NEW: Description box for vertical photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Masanjor memories
+                    </div>
+                </div>
+
+                <!-- Image: images/horizontal10.jpg (ACTUALLY VERTICAL) -->
+                <div> <!-- Correct for a vertical image -->
+                    <img src="images/horizontal10.jpg" alt="Oho candid agya" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <!-- NEW: Description box for vertical photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Oho candid agya
+                    </div>
+                </div>
+
+                <!-- Image: images/vertical5.jpg (ACTUALLY HORIZONTAL) -->
+                <div class="md:col-span-2"> <!-- Correct for a horizontal image -->
+                    <img src="images/vertical5.jpg" alt="I'm so proud of you my baby" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="horizontal">
+                    <!-- NEW: Description box for horizontal photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        I'm so proud of you my baby
+                    </div>
+                </div>
+
+                <!-- Image: images/horizontal5.jpg (ACTUALLY VERTICAL) -->
+                <div> <!-- Correct for a vertical image -->
+                    <img src="images/horizontal5.jpg" alt="Hehe" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <!-- NEW: Description box for vertical photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Hehe
+                    </div>
+                </div>
+
+                <!-- Image: images/horizontal1.jpg (ACTUALLY VERTICAL) -->
+                <div> <!-- Correct for a vertical image -->
+                    <img src="images/horizontal1.jpg" alt="Pahad me ghumi ghumi" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <!-- NEW: Description box for vertical photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Pahad me ghumi ghumi
+                    </div>
+                </div>
+
+                <!-- Image: images/vertical1.jpg (ACTUALLY HORIZONTAL) -->
+                <div class="md:col-span-2"> <!-- Correct for a horizontal image -->
+                    <img src="images/vertical1.jpg" alt="Pehli Holi" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="horizontal">
+                    <!-- NEW: Description box for horizontal photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Pehli Holi
+                    </div>
+                </div>
+
+                <!-- Image: images/vertical2.jpg (ACTUALLY HORIZONTAL) -->
+                <div class="md:col-span-2"> <!-- Correct for a horizontal image -->
+                    <img src="images/vertical2.jpg" alt="First date" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="horizontal">
+                    <!-- NEW: Description box for horizontal photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        First date
+                    </div>
+                </div>
+
+                <!-- Image: images/horizontal2.jpg (ACTUALLY VERTICAL) - First instance -->
+                <div> <!-- Correct for a vertical image -->
+                    <img src="images/horizontal2.jpg" alt="My chest is yours to lean on" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <!-- NEW: Description box for vertical photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        My chest is yours to lean on
+                    </div>
+                </div>
+
+                <!-- Image: images/horizontal2.jpg (ACTUALLY VERTICAL) - Second instance -->
+                <div> <!-- Correct for a vertical image -->
+                    <img src="images/horizontal12.jpg" alt="Calls with you are the best thing ever" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <!-- NEW: Description box for vertical photo -->
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Calls with you are the best thing ever
+                    </div>
+                </div>
+
+                <!-- Add more photos as needed, following the pattern: -->
+                <!-- For ACTUALLY HORIZONTAL (e.g., filename 'verticalX.jpg'): -->
+                <!--
+                <div class="md:col-span-2">
+                    <img src="images/YOUR_HORIZONTAL_PHOTO.jpg" alt="Your description here" class="rounded-lg shadow-md w-full transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="horizontal">
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Your description here
+                    </div>
+                </div>
+                -->
+
+                <!-- For ACTUALLY VERTICAL (e.g., filename 'horizontalY.jpg'): -->
+                <!--
+                <div>
+                    <img src="images/YOUR_VERTICAL_PHOTO.jpg" alt="Your description here" class="rounded-lg shadow-md w-full h-auto transform transition-transform duration-300 hover:scale-105 cursor-pointer" data-orientation="vertical">
+                    <div class="bg-white bg-opacity-80 p-3 rounded-lg mt-2 text-gray-700 text-sm md:text-base font-semibold text-center">
+                        Your description here
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The overlay and enlarged image/poem viewer (initially hidden) -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="relative max-w-3xl max-h-full overflow-auto p-4">
+            <button id="closeOverlayBtn" class="absolute top-4 right-4 text-white text-4xl font-bold z-50">&times;</button>
+            <img id="enlargedImage" src="" alt="Enlarged Photo" class="max-w-full max-h-full rounded-lg shadow-2xl hidden">
+            <div id="enlargedPoemText" class="text-white text-xl p-8 rounded-lg bg-gray-800 max-w-2xl mx-auto hidden overflow-y-auto" style="max-height: 80vh;">
+                <!-- Poem title and text will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Link to our JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

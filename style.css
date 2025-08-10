@@ -1,0 +1,156 @@
+/* Custom CSS for Heart Song App */
+
+/* Ensures the body takes full height and uses Flexbox for centering */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Minimum height of the viewport */
+    margin: 0;
+    padding: 0;
+    background-color: #FFC0CB; /* Light Pink Background */
+    font-family: 'Poppins', sans-serif; /* Default font for most text */
+}
+
+/* Container for the app content, ensures it stays within reasonable bounds */
+.app-container {
+    width: 100%;
+    max-width: 960px; /* Max width for larger screens */
+    padding: 20px;
+    box-sizing: border-box; /* Includes padding in the element's total width and height */
+}
+
+/* Style for the app sections (My Muse, My Love) */
+.content-section {
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 1rem; /* Rounded corners */
+    padding: 1.5rem;
+    margin-top: 2.5rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    transition: all 0.5s ease-in-out;
+    position: relative; /* Added for back button positioning */
+}
+
+.content-section.hidden {
+    display: none; /* Hide sections by default */
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.content-section:not(.hidden) {
+    display: block; /* Show sections */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific background colors for sections */
+#myMuseSection {
+    background-color: #E0FFFF; /* Light Blue for My Muse */
+}
+
+#myLoveSection {
+    background-color: #E0FFFF; /* Light Blue for My Love - CHANGED! */
+}
+
+/* Styling for poem cards within My Muse */
+.poem-card {
+    background-color: #FFFFFF; /* White background for poem cards */
+    border-radius: 0.75rem; /* Slightly rounded corners */
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.poem-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+}
+
+.poem-card img {
+    max-width: 100%; /* Ensure images don't overflow their container */
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.poem-card p {
+    color: #00008B; /* Royal Blue for poem titles */
+    font-weight: 600;
+}
+
+/* Styling for images within My Love */
+#myLoveSection img {
+    border-radius: 0.75rem; /* Rounded corners for images */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    display: block; /* Ensures it behaves correctly in a grid */
+    width: 100%; /* Makes image take full width of its column */
+    height: auto; /* Maintains aspect ratio */
+}
+
+#myLoveSection img:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+}
+
+/* Overlay for enlarged images/poems */
+#overlay {
+    transition: opacity 0.3s ease-in-out; /* Smooth fade in/out */
+}
+
+#overlay.hidden {
+    opacity: 0;
+    pointer-events: none; /* Allows clicks to pass through when hidden */
+}
+
+#overlay:not(.hidden) {
+    opacity: 1;
+    display: flex; /* Ensure it's displayed when not hidden */
+}
+
+#closeOverlayBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    transition: transform 0.2s ease-in-out;
+}
+
+#closeOverlayBtn:hover {
+    transform: rotate(90deg);
+}
+
+#enlargedImage {
+    max-width: 90vw; /* Max width relative to viewport */
+    max-height: 90vh; /* Max height relative to viewport */
+    object-fit: contain; /* Ensures the whole image is visible */
+}
+
+#enlargedPoemText {
+    max-width: 90vw; /* Max width relative to viewport */
+    max-height: 90vh; /* Max height relative to viewport */
+    overflow-y: auto; /* Allow scrolling for long poems */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
+    color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    white-space: pre-wrap; /* Preserves whitespace and line breaks from text */
+}
+
+/* Responsive adjustments for poem and photo grids */
+@media (min-width: 640px) { /* Small screens and up */
+    #myMuseSection .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Two columns for poems */
+    }
+}
